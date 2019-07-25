@@ -1,7 +1,7 @@
 from spack import *
 
 
-class HPX(CMakePackage):
+class Hpx(CMakePackage):
     """C++ runtime system for parallel and distributed applications."""
 
     homepage = "http://stellar.cct.lsu.edu/tag/hpx/"

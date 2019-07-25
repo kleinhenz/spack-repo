@@ -1,7 +1,7 @@
 from spack import *
 
 
-class alpscore(CMakePackage):
+class Alpscore(CMakePackage):
     homepage = "https://github.com/ALPSCore/ALPSCore"
     url      = "https://github.com/ALPSCore/ALPSCore/archive/v2.2.0.tar.gz"
     git      = "https://github.com/ALPSCore/ALPSCore.git"
