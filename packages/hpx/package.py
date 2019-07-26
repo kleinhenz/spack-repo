@@ -18,3 +18,14 @@ class Hpx(CMakePackage):
     def cmake_args(self):
         args = ['-DHPX_BUILD_EXAMPLES=OFF', '-DHPX_WITH_MALLOC=jemalloc', '-DHPX_WITH_MAX_CPU_COUNT=128', '-DHPX_WITH_EXAMPLES=OFF']
         return args
+
+    def check(self):
+        """Searches the CMake-generated Makefile for the target ``test`` and runs it if found.
+        """
+        with working_dir(self.build_directory):
+            if self.generator == 'Unix Makefiles':
+                self._if_make_target_execute('tests')
+                self._if_make_target_execute('test')
+            elif self.generator == 'Ninja':
+                self._if_ninja_target_execute('tests')
+                self._if_ninja_target_execute('test')
