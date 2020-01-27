@@ -6,17 +6,19 @@ class Hpx(CMakePackage):
 
     homepage = "http://stellar.cct.lsu.edu/tag/hpx/"
     url      = "https://github.com/STEllAR-GROUP/hpx/archive/1.3.0.tar.gz"
+    git      = "git@github.com:STEllAR-GROUP/hpx.git"
 
-    version('1.3.0',     sha256='cd34da674064c4cc4a331402edbd65c5a1f8058fb46003314ca18fa08423c5ad')
-    version('1.2.0',     sha256='20942314bd90064d9775f63b0e58a8ea146af5260a4c84d0854f9f968077c170')
+    version('1.4.0', tag='1.4.0')
+    version('1.3.0', tag='1.3.0')
+    version('1.2.0', tag='1.2.0')
 
-    depends_on('boost')
+    depends_on('boost cxxstd=14')
     depends_on('jemalloc')
     depends_on('hwloc')
     depends_on('mpi')
 
     def cmake_args(self):
-        args = ['-DHPX_BUILD_EXAMPLES=OFF', '-DHPX_WITH_MALLOC=jemalloc', '-DHPX_WITH_MAX_CPU_COUNT=128', '-DHPX_WITH_EXAMPLES=OFF']
+        args = ['-DHPX_BUILD_EXAMPLES=OFF', '-DHPX_WITH_MALLOC=jemalloc', '-DHPX_WITH_MAX_CPU_COUNT=128', '-DHPX_WITH_EXAMPLES=OFF', '-DHPX_WITH_CXX14=ON']
         return args
 
     def check(self):
